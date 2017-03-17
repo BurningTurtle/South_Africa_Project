@@ -14,8 +14,8 @@ public class MainSceneController : MonoBehaviour {
 	void Start () {
 		Vector2 startPos = new Vector2(0,0);
 
-		for (int i = 0; i < gridCols; i++) {
-			for (int j = 0; j < gridRows; j++) {
+		for (int i = 0; i < gridRows; i++) {
+			for (int j = 0; j < gridCols; j++) {
 				Grass grass = Instantiate (grass0);
 				int id = Random.Range (0, 3);
 				switch (id) {
