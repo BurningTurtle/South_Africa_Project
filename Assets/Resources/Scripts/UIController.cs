@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour {
 
-	[SerializeField] private Text scoreLabel;
+	[SerializeField] private Text karmaLabel;
+	[SerializeField] private Text actionLabel;
+	[SerializeField] private Fountain fountain;
+	public int karma = 0;
 
 	// Use this for initialization
 	void Start () {
-		
-		
+		InvokeRepeating ("KarmaAction", 0, 1.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		scoreLabel.text = Time.realtimeSinceStartup.ToString ();
+		karmaLabel.text = karma.ToString ();
+	}
+
+	void KarmaAction() {
+		karma += 1;
+		fountain.setState (karma);
 	}
 }
