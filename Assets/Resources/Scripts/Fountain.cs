@@ -166,17 +166,19 @@ public class Fountain : MonoBehaviour
                 break;
         }
 
+        setState((water - (water % 10)) / 10);
+        Debug.Log("State should be set to" + (water - (water % 10)) / 10);
     }
 
     public void setState(int state)
     {
         animator.SetInteger("state", state);
+        Debug.Log("State was set to " + state);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        setState((water - (water % 10)) / 10);
+    {   
         Debug.Log("Water: " + water);
         Debug.Log("Karma: " + karma);
     }

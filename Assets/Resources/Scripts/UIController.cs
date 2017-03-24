@@ -18,7 +18,14 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    karmaLabel.text = fountain.karma.ToString ();
+        if (fountain.karma != 0)
+        {
+            karmaLabel.text = fountain.karma.ToString();
+        }
+	    else
+        {
+            karmaLabel.text = " ";
+        }
 	}
 
     public void fadePositive()
