@@ -76,10 +76,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Resources\Scripts\Button.cs" />
+    <Compile Include="Assets\Resources\Scripts\Floor.cs" />
     <Compile Include="Assets\Resources\Scripts\Fountain.cs" />
     <Compile Include="Assets\Resources\Scripts\Grass.cs" />
+    <Compile Include="Assets\Resources\Scripts\House1Controller.cs" />
     <Compile Include="Assets\Resources\Scripts\MainSceneController.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerScript.cs" />
+    <Compile Include="Assets\Resources\Scripts\Teleport.cs" />
     <Compile Include="Assets\Resources\Scripts\UIController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

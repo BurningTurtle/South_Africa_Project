@@ -1,86 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class MainSceneController : MonoBehaviour
-{
+public class House1Controller : MonoBehaviour {
 
     public int gridRows = 10;
     public int gridCols = 10;
     public int offset = 1;
-    public Grass grass0, grass1, grass2, grass3;
-    public Grass grassBlocked0, grassBlocked1, grassBlocked2, grassBlocked3;
+    public Floor floor0, floor1, floor2, floor3;
+    public Floor floorBlocked0, floorBlocked1, floorBlocked2, floorBlocked3;
+    public Floor start;
 
     // Use this for initialization
-    void Start()
-    {
-        Vector2 startPos = new Vector2(0, 0);
+    void Start () {
+        Vector2 startPos = start.transform.position;
 
-        for (int i = 0; i < gridRows; i++)
+        for (int i = 0; i < gridCols; i++)
         {
-            for (int j = 0; j < gridCols; j++)
+            for (int j = 0; j < gridRows; j++)
             {
-                Grass grass = Instantiate(grass0);
+                Floor floor = Instantiate(floor0);
                 int id = Random.Range(0, 3);
                 switch (id)
                 {
                     case 0:
                         if (i == 0 || j == 0 || i == gridCols - 1 || j == gridRows - 1)
                         {
-                            grass = Instantiate(grassBlocked0) as Grass;
+                            floor = Instantiate(floorBlocked0) as Floor;
                         }
                         else
                         {
-                            grass = Instantiate(grass0) as Grass;
+                            floor = Instantiate(floor0) as Floor;
                         }
                         break;
                     case 1:
                         if (i == 0 || j == 0 || i == gridCols - 1 || j == gridRows - 1)
                         {
-                            grass = Instantiate(grassBlocked1) as Grass;
+                            floor = Instantiate(floorBlocked1) as Floor;
                         }
                         else
                         {
-                            grass = Instantiate(grass1) as Grass;
+                            floor = Instantiate(floor1) as Floor;
                         }
                         break;
                     case 2:
                         if (i == 0 || j == 0 || i == gridCols - 1 || j == gridRows - 1)
                         {
-                            grass = Instantiate(grassBlocked2) as Grass;
+                            floor = Instantiate(floorBlocked2) as Floor;
                         }
                         else
                         {
-                            grass = Instantiate(grass2) as Grass;
+                            floor = Instantiate(floor2) as Floor;
                         }
                         break;
                     case 3:
                         if (i == 0 || j == 0 || i == gridCols - 1 || j == gridRows - 1)
                         {
-                            grass = Instantiate(grassBlocked3) as Grass;
+                            floor = Instantiate(floorBlocked3) as Floor;
                         }
                         else
                         {
-                            grass = Instantiate(grass3) as Grass;
+                            floor = Instantiate(floor3) as Floor;
                         }
                         break;
                 }
 
                 float posX = (offset * i) + startPos.x;
                 float posY = (offset * j) + startPos.y;
-                grass.transform.position = new Vector3(posX, posY, 100);
+                floor.transform.position = new Vector3(posX, posY, 100);
             }
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("escape"))
-        {
-            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-        }
-    }
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 }
