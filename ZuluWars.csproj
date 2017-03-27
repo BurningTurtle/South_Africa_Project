@@ -82,6 +82,7 @@
     <Compile Include="Assets\Resources\Scripts\House1Controller.cs" />
     <Compile Include="Assets\Resources\Scripts\MainSceneController.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerScript.cs" />
+    <Compile Include="Assets\Resources\Scripts\QuestionController.cs" />
     <Compile Include="Assets\Resources\Scripts\Teleport.cs" />
     <Compile Include="Assets\Resources\Scripts\UIController.cs" />
   </ItemGroup>
