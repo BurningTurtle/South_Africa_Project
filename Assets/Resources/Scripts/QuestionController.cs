@@ -26,13 +26,13 @@ public class QuestionController : MonoBehaviour {
                 case "geography1":
                     question.text = "Which South African neighbor country is bordered by the river Orange";
                     answers.text = "1 Namibia   2 Botswana   3 Mosambik   4 Simbabwe";
-                    StartCoroutine(getAnswer("g1"));
+                    StartCoroutine(getAnswer(1));
                     break;
-            }
+            }   
         }
     }
 
-    IEnumerator getAnswer(string i)
+    IEnumerator getAnswer(int rightAnswerInt)
     {
         question.CrossFadeAlpha(1f, 2f, false);
         answers.CrossFadeAlpha(1f, 3f, false);
@@ -62,18 +62,13 @@ public class QuestionController : MonoBehaviour {
         }
         question.CrossFadeAlpha(0f, 1f, false);
         answers.CrossFadeAlpha(0f, 1f, false);
-        switch (i)
+        if (answer == rightAnswerInt)
         {
-            case "g1":
-                if (answer == 1)
-                {
-                    StartCoroutine(rightAnswer());
-                }
-                else
-                {
-                    StartCoroutine(wrongAnswer());
-                }
-                break;
+            StartCoroutine(rightAnswer());
+        }
+        else
+        {
+            StartCoroutine(wrongAnswer());
         }
         answered = false;
     }

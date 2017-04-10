@@ -85,6 +85,8 @@
     <Compile Include="Assets\Resources\Scripts\QuestionController.cs" />
     <Compile Include="Assets\Resources\Scripts\Teleport.cs" />
     <Compile Include="Assets\Resources\Scripts\UIController.cs" />
+    <Compile Include="Assets\Resources\Scripts\ZuluHunter.cs" />
+    <Compile Include="Assets\ZuluHunterWeapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
