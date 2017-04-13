@@ -109,22 +109,22 @@ public class QuestionController : MonoBehaviour {
         answers.CrossFadeAlpha(1f, 3f, false);
         while (answered == false)
         {
-            if(Input.GetKeyDown("1"))
+            if(Input.GetKeyDown("1") || Input.GetKeyDown("joystick button 0"))
             {
                 answered = true;
                 answer = 1;
             }
-            if (Input.GetKeyDown("2"))
+            if (Input.GetKeyDown("2") || Input.GetKeyDown("joystick button 2"))
             {
                 answered = true;
                 answer = 2;
             }
-            if (Input.GetKeyDown("3"))
+            if (Input.GetKeyDown("3") || Input.GetKeyDown("joystick button 3"))
             {
                 answered = true;
                 answer = 3;
             }
-            if (Input.GetKeyDown("4"))
+            if (Input.GetKeyDown("4") || Input.GetKeyDown("joystick button 1"))
             {
                 answered = true;
                 answer = 4;

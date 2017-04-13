@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator> ();
-		transform.position = new Vector2 (msc.gridCols / 2, 1);
+		//transform.position = new Vector2 (msc.gridCols / 2, 1);
 	}
 	
 	// Update is called once per frame
