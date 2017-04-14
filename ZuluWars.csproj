@@ -80,13 +80,14 @@
     <Compile Include="Assets\Resources\Scripts\Fountain.cs" />
     <Compile Include="Assets\Resources\Scripts\Grass.cs" />
     <Compile Include="Assets\Resources\Scripts\House1Controller.cs" />
+    <Compile Include="Assets\Resources\Scripts\HuntingWeapon.cs" />
     <Compile Include="Assets\Resources\Scripts\MainSceneController.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Resources\Scripts\QuestionController.cs" />
     <Compile Include="Assets\Resources\Scripts\Teleport.cs" />
     <Compile Include="Assets\Resources\Scripts\UIController.cs" />
     <Compile Include="Assets\Resources\Scripts\ZuluHunter.cs" />
-    <Compile Include="Assets\ZuluHunterWeapon.cs" />
+    <Compile Include="Assets\Resources\Scripts\ZuluHunterWeapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

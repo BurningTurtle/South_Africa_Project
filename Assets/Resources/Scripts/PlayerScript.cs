@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour {
 	public float playerSpeed = 4f;
 	private Animator animator;
 	public MainSceneController msc;
+    public bool hunting;
 
 	// Use this for initialization
 	void Start () {
