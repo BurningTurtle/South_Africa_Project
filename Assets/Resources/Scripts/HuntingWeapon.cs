@@ -7,6 +7,7 @@ public class HuntingWeapon : MonoBehaviour {
 
     [SerializeField] private Text text;
     public bool given, flying, initiated;
+    public int killed;
 
     // Use this for initialization
     void Start () {
@@ -28,7 +29,23 @@ public class HuntingWeapon : MonoBehaviour {
         rotateToMouse();
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(fly());
+            if(given)
+            {
+                StartCoroutine(fly());
+            }
+            
+        }
+        if(killed < 6 && killed >= 1 && GameObject.Find("MainCharacter").GetComponent<PlayerScript>().hunting)
+        {
+            text.fontSize = 80;
+            text.CrossFadeAlpha(1f, 2f, false);
+            text.text = (6 - killed) + " remaining";
+        }
+        if(killed == 6)
+        {
+            text.text = "success";
+            text.CrossFadeAlpha(0f, 2f, false);
+            Destroy(this.gameObject);
         }
     }
 
@@ -45,7 +62,7 @@ public class HuntingWeapon : MonoBehaviour {
         Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;
         flying = true;
         GetComponent<Rigidbody2D>().AddForce(dir * 200);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         flying = false;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }

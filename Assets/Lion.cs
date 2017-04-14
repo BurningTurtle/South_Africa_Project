@@ -18,6 +18,32 @@ public class Lion : MonoBehaviour {
 	void Update () {
         if (GameObject.Find("MainCharacter").GetComponent<PlayerScript>().hunting && walking == false)
         {
+            switch (transform.name)
+            {
+                case "lion1":
+                    transform.position = new Vector2(transform.position.x + 5, transform.position.y);
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    break;
+                case "lion2":
+                    transform.position = new Vector2(transform.position.x + 5, transform.position.y);
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    break;
+                case "lion3":
+                    transform.position = new Vector2(transform.position.x + 5, transform.position.y);
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    break;
+                case "lion4":
+                    transform.position = new Vector2(transform.position.x - 5, transform.position.y);
+                    break;
+                case "lion5":
+                    transform.position = new Vector2(transform.position.x - 5, transform.position.y);
+                    break;
+                case "lion6":
+                    transform.position = new Vector2(transform.position.x - 5, transform.position.y);
+                    break;
+                
+
+            }
             InvokeRepeating("walk", 0, 1.0f);
             walking = true;
         }
@@ -40,6 +66,7 @@ public class Lion : MonoBehaviour {
         {
             if (collision.GetComponent<HuntingWeapon>().flying == true)
             {
+                collision.GetComponent<HuntingWeapon>().killed++;
                 Destroy(this.gameObject);
             }
             
