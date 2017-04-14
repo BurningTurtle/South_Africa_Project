@@ -6,7 +6,7 @@ using UnityEngine;
 public class HuntingWeapon : MonoBehaviour {
 
     [SerializeField] private Text text;
-    bool given, flying, initiated;
+    public bool given, flying, initiated;
 
     // Use this for initialization
     void Start () {
@@ -43,8 +43,8 @@ public class HuntingWeapon : MonoBehaviour {
 
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;
-        GetComponent<Rigidbody2D>().AddForce(dir * 500);
         flying = true;
+        GetComponent<Rigidbody2D>().AddForce(dir * 200);
         yield return new WaitForSeconds(2f);
         flying = false;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
