@@ -8,6 +8,7 @@ public class HuntingWeapon : MonoBehaviour {
     [SerializeField] private Text text;
     public bool given, flying, initiated;
     public int killed;
+    public bool keyboard;
 
     // Use this for initialization
     void Start () {
@@ -26,15 +27,32 @@ public class HuntingWeapon : MonoBehaviour {
             //transform.localPosition = new Vector2(0.81f, 0.49f);
             transform.rotation = Quaternion.Euler(0, 0, -30);
         }
-        rotateToMouse();
-        if (Input.GetMouseButtonDown(0))
+
+        if (keyboard)
         {
-            if(given)
+            rotateToMouse();
+            if(Input.GetMouseButtonDown(0))
             {
-                StartCoroutine(fly());
+                if (given)
+                {
+                    StartCoroutine(fly());
+                }
+
             }
-            
         }
+        else
+        {
+            rotateToJoystick();
+            if (Input.GetKeyDown("joystick button 5"))
+            {
+                if (given)
+                {
+                    StartCoroutine(fly());
+                }
+            }
+
+        }
+        
         if(killed < 6 && killed >= 1 && GameObject.Find("MainCharacter").GetComponent<PlayerScript>().hunting)
         {
             text.fontSize = 80;
@@ -51,20 +69,36 @@ public class HuntingWeapon : MonoBehaviour {
 
     IEnumerator fly()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 5.23f;
+        if(keyboard)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 5.23f;
 
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
+            Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+            mousePos.x = mousePos.x - objectPos.x;
+            mousePos.y = mousePos.y - objectPos.y;
 
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;
-        flying = true;
-        GetComponent<Rigidbody2D>().AddForce(dir * 200);
-        yield return new WaitForSeconds(1f);
-        flying = false;
-        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+            Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;
+            flying = true;
+            GetComponent<Rigidbody2D>().AddForce(dir * 200);
+            yield return new WaitForSeconds(1f);
+            flying = false;
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+        else
+        {
+            float horizontal = Input.GetAxisRaw("HorizontalRight");
+            float vertical = Input.GetAxisRaw("VerticalRight");
+            float angle = Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
+            Vector3 dir = Quaternion.AngleAxis(angle-90, Vector3.forward) * Vector3.right;
+            flying = true;
+            GetComponent<Rigidbody2D>().AddForce(dir * 200);
+            yield return new WaitForSeconds(1f);
+            flying = false;
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -105,6 +139,17 @@ public class HuntingWeapon : MonoBehaviour {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         }
 
+    }
+
+    private void rotateToJoystick()
+    {
+        if (given == true && !flying)
+        {
+            float horizontal = Input.GetAxisRaw("HorizontalRight");
+            float vertical = Input.GetAxisRaw("VerticalRight");
+            float angle = Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));
+        }
     }
        
 }
