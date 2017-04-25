@@ -27,7 +27,7 @@ public class ZuluHunter : MonoBehaviour {
     {
         if (collision.transform.name == "MainCharacter")
         {
-            //hunting = true;
+            hunting = true;
             Debug.Log("hunting");
         }
     }
